@@ -40,8 +40,10 @@ vectorizer = TfidfVectorizer(
     stop_words=custom_stopwords
 )
 
+vectorizer.fit(X)
+
 # text 데이터 벡터화
-X_train = vectorizer.fit_transform(X_train_text)
+X_train = vectorizer.transform(X_train_text)
 X_test = vectorizer.transform(X_test_text)
 
 # 모델 학습
