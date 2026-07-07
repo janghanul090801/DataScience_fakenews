@@ -9,7 +9,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 # 데이터 - 가짜 뉴스 및 진짜 뉴스 데이터
 df = pd.read_csv('WELFake_Dataset.csv')
 # 결측치 삭제
-df = df.dropna(subset=['text'])
+df = df.dropna()
 # 원본 데이터가 필드가 반전되어있어 필드 반전
 df['label'] = df['label'].apply(lambda x: 1-x)
 
@@ -50,7 +50,7 @@ X_test = vectorizer.transform(X_test_text)
 LR = LogisticRegression()
 LR.fit(X_train, y_train)
 
-confusion_matrix(y_test, LR.predict(X_test))
+print(confusion_matrix(y_test, LR.predict(X_test)))
 print(accuracy_score(y_test, LR.predict(X_test)))
 print(classification_report(y_test, LR.predict(X_test)))
 

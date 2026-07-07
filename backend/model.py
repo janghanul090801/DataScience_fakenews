@@ -3,7 +3,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 df = pd.read_csv('WELFake_Dataset.csv')
-df = df.dropna(subset=['text'])
+df = df.dropna()
 df['label'] = df['label'].apply(lambda x: 1-x)
 
 X = df['text']
